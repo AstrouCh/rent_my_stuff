@@ -20,14 +20,7 @@ best_one = Favourite.new(user: User.last, title: "Best Surfboard", item: Item.la
 best_one.save!
 
 first_booking = Booking.new(item: Item.last, user: User.last, start_date: Time.now, end_date: Time.now)
-<<<<<<< HEAD
-first_booking.save
-
-outdoor = Category.new(name: "outdoor")
-outdoor.save!
-=======
 first_booking.save!
 
 first_review = Review.new(content: "Very good item! Mega mega good mega", rating: 4, booking: Booking.last)
 first_review.save!
->>>>>>> master
