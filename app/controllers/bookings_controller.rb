@@ -10,12 +10,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:list_id])
+
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.item = @item
-    if @booking.save
-      redirect_to user_path(current_user)
+    @booking.item = Item.find(params[:item_id])
+    if @booking.save!
+      redirect_to booking_path(@booking.user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
   def update
     @booking = booking.new(booking_params)
     if @booking.update
+
       redirect_to booking_path(@booking)
     else
       render :edit, status: :unprocessable_entity
