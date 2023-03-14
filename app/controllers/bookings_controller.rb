@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   def show
-    @bookings = Booking.where(user_id: current_user)
+    @booking = Booking.where(user_id: current_user).last
   end
 
   def new
@@ -25,8 +25,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    
-    @booking = booking.update(params[:booking])
+    @booking = booking.new(booking_params)
     if @booking.update
       redirect_to booking_path(@booking)
     else
@@ -44,7 +43,7 @@ private
   end
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
 end
