@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: :home
+
+  def home
+  end
+
   def index
     @items = Item.all
   end
@@ -8,17 +12,17 @@ class ItemsController < ApplicationController
   def show
   end
 
-
   def new
     @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    @item.user = current_user
+    if @item.save!
       redirect_to item_path(@item)
     else
-      render :new, status: :unprocessable_entry
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +34,7 @@ class ItemsController < ApplicationController
     if @item.update
       redirect_to item_path(@item)
     else
-      render :edit, status: :unprocessable_entry
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :location, :description)
+    params.require(:item).permit(:title, :location, :description, :category_id)
   end
 
 
