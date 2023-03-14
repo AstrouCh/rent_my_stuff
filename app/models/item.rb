@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one :categories
+  belongs_to :category
   has_many :favourites
 
   validates :title, presence: true
