@@ -1,9 +1,9 @@
 <h1>Edit my review</h1>
 
-<%= simple_form_for[@item, @review] do |f| %>
+<%= simple_form_for(@review) do |f| %>
   <%= f.input :content %>
   <%= f.input :rating %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Back to item", item_path(@item) %>
+<%= link_to "Back to item", item_path(@review.booking.item) %>
