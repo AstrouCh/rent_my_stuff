@@ -1,0 +1,9 @@
+<h1>Make a booking</h1>
+
+<%= simple_form_for [@item, @booking] do |f| %>
+  <%= f.input :date %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to all items", items_path %>
