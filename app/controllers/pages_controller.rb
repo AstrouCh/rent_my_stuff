@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   def show
     @items = Item.where(user_id: params[:id])
   end
+
+  def show
+    @bookings = Booking.where(user_id: params[:id])
 end
