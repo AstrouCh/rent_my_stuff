@@ -1,0 +1,9 @@
+<h1>Edit the booking of <%=  @booking.item.title %></h1>
+
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to booking", booking_path(@booking) %>
