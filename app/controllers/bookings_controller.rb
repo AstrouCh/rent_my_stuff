@@ -26,8 +26,10 @@ class BookingsController < ApplicationController
 
   def update
 
+
     @booking = booking.update(params[:booking])
     if @booking.update
+
       redirect_to booking_path(@booking)
     else
       render :edit, status: :unprocessable_entity
