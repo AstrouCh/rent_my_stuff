@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def show
+    @items = Item.where(user_id: params[:id])
+  end
 end
