@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-  get 'items/new'
-  get 'items/create'
-  get 'items/edit'
-  get 'items/update'
-  get 'items/destroy'
-  get 'items/show'
-  get 'items/index'
   devise_for :users
-  root to: "pages#home"
+  root to: "items#home"
+  get "/users/:id", to: "pages#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :items do
     resources :bookings, only: [:new, :create]
