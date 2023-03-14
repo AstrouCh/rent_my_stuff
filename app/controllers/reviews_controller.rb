@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[edit update destroy]
 
   def new
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
   end
 

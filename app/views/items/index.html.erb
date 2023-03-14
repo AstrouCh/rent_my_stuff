@@ -2,9 +2,14 @@
 
 <ul>
   <% @items.each do |item| %>
-    <li><%= item.title %></li>
-    <li><%= item.location %></li>
-    <li><%= item.description %></li>
-    <li><%= item.average_rating %></li>
+    <li><%= link_to item.title, item_path(item) %> - <%= link_to "❌",
+    item_path(item),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add an item", new_item_path %>
+
+    <%# <li><%= item.location %>
+    <%# <li><%= item.description %>
+    <%# <li><%= item.average_rating %>

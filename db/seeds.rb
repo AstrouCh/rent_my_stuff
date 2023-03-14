@@ -21,3 +21,6 @@ first_review.save
 
 first_booking = Booking.new(item: Item.last, user: User.last, start_date: Time.now, end_date: Time.now)
 first_booking.save
+
+outdoor = Category.new(name: "outdoor")
+outdoor.save!
