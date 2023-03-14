@@ -1,13 +1,16 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: :home
+
+  def home
+  end
+
   def index
     @items = Item.all
   end
 
   def show
   end
-
 
   def new
     @item = Item.new
