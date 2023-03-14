@@ -1,20 +1,21 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   def show
-    @user = User.where(user_id: params[:id])
+    @bookings = Booking.where(user_id: current_user)
   end
 
   def new
-    @item = Item.find(params[:user_id])
+    @item = Item.find(params[:item_id])
     @booking = Booking.new
   end
 
   def create
     @item = Item.find(params[:list_id])
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     @booking.item = @item
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to user_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +25,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    
     @booking = booking.update(params[:booking])
     if @booking.update
       redirect_to booking_path(@booking)
