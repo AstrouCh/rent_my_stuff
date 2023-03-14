@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item)
     else
-      render :new, status: :unprocessable_entry
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.update
       redirect_to item_path(@item)
     else
-      render :edit, status: :unprocessable_entry
+      render :edit, status: :unprocessable_entity
     end
   end
 

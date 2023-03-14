@@ -1,2 +1,9 @@
 <h1>Add a new item</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+
+<%= simple_form_for(@item) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :location %>
+  <%= f.input :description %>
+  <%# <%= f.input :average_rating %>
+  <%= f.submit %>
+<% end %>
