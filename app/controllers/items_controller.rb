@@ -30,8 +30,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = item.update(params[:item])
-    if @item.update
+    @item.update(item_params)
+    if @item.save
       redirect_to item_path(@item)
     else
       render :edit, status: :unprocessable_entity
@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
+    redirect_to items_path, status: :see_other
   end
 
   private

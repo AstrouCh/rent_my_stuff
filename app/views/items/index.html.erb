@@ -2,9 +2,8 @@
 
 <ul>
   <% @items.each do |item| %>
-    <li><%= link_to item.title, item_path(item) %> - <%= link_to "❌",
-    item_path(item),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
+    <li><%= link_to item.title, item_path(item) %> - <%= button_to "❌",
+    item_path(item), method: :delete %></li>
   <% end %>
 </ul>
 

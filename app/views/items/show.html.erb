@@ -1,12 +1,14 @@
-<<<<<<< HEAD
-<h1><%= item.title %></h1>
 
-<p><%= item.location %></p>
-<p><%= item.description %></p>
-<p><%= item.average_rating %></p>
+
+<p><%= @item.location %></p>
+<p><%= @item.average_rating %></p>
+
+<%= link_to "Edit this item", edit_item_path %>
 
 <%= link_to "Back to all items", items_path %>
-=======
+<%= button_to "❌",
+    item_path(@item), method: :delete %>
+
 <div class="show-page">
   <div class="product-media">
     <div class="product-images">
@@ -24,15 +26,15 @@
         <img class="profile-pic" src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
       </div>
       <div class="user-desc">
-        <h1>Trevor G</h1>
-        <p>I love skiing and the outdoors! Unfortunately I was bitten by a muskrat recently and can't ski until it's healed so I thought I'd share some of my stuff here so it doesnt get dusty alongside me!</p>
+        <h1><%= @item.user.first_name %></h1>
+        <p><%= @item.user.description %></p>
       </div>
     </div>
   </div>
   <div class="product-info">
     <div class="product-text">
-      <h1>Music Production Headphones</h1>
-      <p>Senheiser 25x's, fantastic condition, studio quality. Renting them out for a couple of months while my music studio is under renovation and I'll have no use for them.</p>
+      <h1> <%= @item.title  %></h1>
+      <p><%= @item.description %></p>
     </div>
     <div class="date-location">
       <div class="calender">
@@ -47,4 +49,3 @@
     </div>
   </div>
 </div>
->>>>>>> master
