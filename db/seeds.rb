@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-tom = User.new(email: "tomm@gmail.com", password: "longgggpassword", first_name: "Tom", last_name: "Burns", description: "I am looking to hire a really cool thing", address: "London", phone_number: "+447917730793")
+tom = User.new(email: "tom@gmail.com", password: "tom@gmail.com", first_name: "Tom", last_name: "Burns", description: "I am looking to hire a really cool thing", address: "London", phone_number: "+447917730793")
 tom.save!
 
 astrid = User.new(email: "astridchazaux@hotmail.fr", password: "astridchazaux@hotmail.fr", first_name: "Astrid", last_name: "Chazaux", description: "I have nice stuffs to rent", address: "berlin", phone_number: "+33665348376")
@@ -39,15 +39,8 @@ climbing_material.save!
 circular_saw = Item.new(title: "Circular Saw", location: "Fontainebleau", description: "Amazingly cutting stuff", user: User.last, category: Category.first)
 circular_saw.save!
 
-
 first_booking = Booking.new(item: Item.first, user: User.first, start_date: Time.now, end_date: Time.now)
 first_booking.save!
 
 last_booking = Booking.new(item: Item.last, user: User.last, start_date: Time.now, end_date: Time.now)
 last_booking.save!
-
-first_review = Review.new(content: "Very good item! Mega mega good mega", rating: 4, booking: Booking.first)
-first_review.save!
-
-last_review = Review.new(content: "Bad item! Mega mega badddd mega", rating: 4, booking: Booking.last)
-last_review.save!
