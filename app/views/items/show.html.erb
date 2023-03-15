@@ -3,6 +3,9 @@
   <div class="product-media">
     <div class="product-images">
       <div class="main-image">
+        <% @item.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         <img id="main-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
       </div>
       <div class="side-images">
@@ -12,9 +15,13 @@
       </div>
     </div>
     <div class="user-info">
+    <% if @item.user.photo.attached? %>
       <div class="user-image">
-        <img class="profile-pic" src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+        <%= cl_image_tag(@item.user.photo.key) %>
       </div>
+    <% else %>
+
+    <% end %>
       <div class="user-desc">
         <h1><%= @item.user.first_name %></h1>
         <p><%= @item.user.description %></p>
