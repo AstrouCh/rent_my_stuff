@@ -7,11 +7,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.booking = Booking.find(params[:booking_id])
-    @item = Item.find(@review.booking.item.id)
-    if @review.save!
-      redirect_to item_path(@review.booking.item)
+    @review.booking = @booking
+    if @review.save
+      redirect_to item_path(@booking.item)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
     @review.destroy
   end
 
