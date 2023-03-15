@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude
+      }
+    end
   end
 
   def show
@@ -55,6 +61,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:title, :location, :description, :category_id)
   end
-
 
 end
