@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude
+      }
+    end
   end
 
   def show
@@ -43,7 +49,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   private
@@ -55,6 +61,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:title, :location, :description, :category_id)
   end
-
 
 end
