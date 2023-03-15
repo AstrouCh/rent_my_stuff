@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :phone_number, phone: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
 end

@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_one_attached :photo
   has_many :bookings, dependent: :destroy
+  has_many_attached :photos
   validates :title, presence: true
   validates :location, presence: true
   validates :description, length: { minimum: 20 }
