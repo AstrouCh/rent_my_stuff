@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   def show
-    @bookings = Booking.where(user: current_user)
+    @bookings = Bookings.where(user: current_user)
+    @bookings_last = Booking.where(user: current_user).last
   end
 
   def new
@@ -25,8 +26,6 @@ class BookingsController < ApplicationController
   end
 
   def update
-
-
     @booking = booking.update(params[:booking])
     if @booking.update
 
