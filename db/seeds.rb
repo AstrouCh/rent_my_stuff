@@ -39,8 +39,6 @@ climbing_material.save!
 circular_saw = Item.new(title: "Circular Saw", location: "Fontainebleau", description: "Amazingly cutting stuff", user: User.last, category: Category.first)
 circular_saw.save!
 
-best_one = Favourite.new(user: User.last, title: "Best Surfboard", item: Item.last)
-best_one.save!
 
 first_booking = Booking.new(item: Item.first, user: User.first, start_date: Time.now, end_date: Time.now)
 first_booking.save!
@@ -53,6 +51,3 @@ first_review.save!
 
 last_review = Review.new(content: "Bad item! Mega mega badddd mega", rating: 4, booking: Booking.last)
 last_review.save!
-
-other_review = Review.new(content: "I love it soooooooooo muuuuchhhhhhhhhhh", rating: 5, booking: Booking.first)
-other_review.save!
