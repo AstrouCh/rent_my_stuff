@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
     if @review.update(review_params)
       redirect_to item_path(@review.booking.item)
     else
@@ -41,6 +40,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating) #:booking_id?
+    params.require(:review).permit(:content, :rating, :booking_id)
   end
 end
