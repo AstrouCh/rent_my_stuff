@@ -1,11 +1,7 @@
 <p><%= @item.location %></p>
 <p><%= @item.average_rating %></p>
 
-<%= link_to "Edit this item", edit_item_path %>
 
-<%= link_to "Back to all items", items_path %>
-<%= button_to "❌",
-    item_path(@item), method: :delete %>
 
 <div class="show-page">
   <div class="product-media">
@@ -33,6 +29,10 @@
     <div class="product-text">
       <h1> <%= @item.title  %></h1>
       <p><%= @item.description %></p>
+      <% if current_user == @item.user %>
+        <%= link_to "Edit this item", edit_item_path %>
+
+      <% end %>
     </div>
     <div class="date-location">
       <div class="calender">
