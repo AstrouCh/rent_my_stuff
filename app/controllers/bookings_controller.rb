@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   def show
-    @bookings = Bookings.where(user: current_user)
+    @bookings = Booking.where(user: current_user)
     @bookings_last = Booking.where(user: current_user).last
   end
 
@@ -16,9 +16,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.item = Item.find(params[:item_id])
     if @booking.save!
-      redirect_to booking_path(@booking.user)
+      redirect_to confirmation_path(@booking)
     else
-      render :new, status: :unprocessable_entity
+      render "items/show", status: :unprocessable_entity
     end
   end
 

@@ -8,7 +8,4 @@ class PagesController < ApplicationController
     @bookings = Booking.where(user_id: params[:id])
   end
 
-  def show
-    @bookings = Booking.where(user_id: params[:id])
-  end
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "/bookings/:id/confirmation", to: "bookings#show", as: :confirmation
   root to: "items#home"
   get "/users/:id", to: "pages#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:edit, :update, :destroy, :show] do
+  resources :bookings, only: [:edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
   end
 
