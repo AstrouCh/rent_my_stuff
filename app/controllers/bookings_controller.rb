@@ -37,7 +37,9 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    redirect_to user_path, status: :see_other
   end
+
 
 private
   def booking_params
