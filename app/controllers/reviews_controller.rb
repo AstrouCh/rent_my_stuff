@@ -40,6 +40,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating) #:booking_id?
+    params.require(:review).permit(:content, :rating, :booking_id)
   end
 end
