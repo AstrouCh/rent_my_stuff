@@ -39,6 +39,9 @@ climbing_material.save!
 circular_saw = Item.new(title: "Circular Saw", location: "Fontainebleau", description: "Amazingly cutting stuff", user: User.last, category: Category.first)
 circular_saw.save!
 
+camping = Item.create(location: "16 Villa Gaudelet, Paris", title: "Camping kit", description: "Tent, mat, covers, gaz, light... everything you need to camp", user: User.last, category: Category.first)
+camping.save!
+
 best_one = Favourite.new(user: User.last, title: "Best Surfboard", item: Item.last)
 best_one.save!
 
