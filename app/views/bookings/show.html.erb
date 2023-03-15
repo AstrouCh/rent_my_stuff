@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>These are your bookings</h1>
 
 <p>these are your bookings</p>
@@ -6,3 +7,18 @@
 <p> Booking dates <%= @booking.start_date %> to  <%= @booking.end_date %> </p>
 ---
 <p><%= link_to "Back to all items", items_path %></p>
+=======
+  <% if user_signed_in? %>
+    <h2 class="text-center mb-5">BOOKING CONFIRMATION   <span class="text-success"><i class="fa-solid fa-check"></i></span></h2>
+    <div class="container col-sm-12 col-lg-6 border shadow">
+      <p class="fs-3"><strong>Item: </strong><%= @booking.item.title %></p>
+      <p class="fs-3"><strong>Description: </strong><%= @booking.item.description %></p>
+      <p class="fs-3"><strong>Owner: </strong><%= @booking.item.user.email %></p>
+      <p class="fs-3"><strong>Location: </strong><%= @booking.item.location %></p>
+      <p class="fs-3"><strong>Start date: </strong><%= @booking.start_date %></p>
+      <p class="fs-3"><strong>End date: </strong><%= @booking.end_date %></p>
+    </div>
+  <% else %>
+    <p>Sign in to see your last booking! <%= link_to("Sign in", new_user_session_path, class:"btn btn-outline-success") %></p>
+  <% end %>
+>>>>>>> master
