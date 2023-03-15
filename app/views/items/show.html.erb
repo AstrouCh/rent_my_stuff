@@ -36,7 +36,7 @@
     </div>
     <div class="date-location">
       <div class="calender">
-        <img class="placeholder" src="https://docs.joomla.org/images/9/9c/DatePicker2.calendar-en.png">
+        <%= render "bookings/form"%>
       </div>
       <div class="mapbox">
         <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiYnJ1bnN3aWNrY2siLCJhIjoiY2xlaWhxNTAxMDFpeTNxbjRkb282aWF0NiJ9.UuVJl5eb8HTWiIm7yzstnQ'>
@@ -46,4 +46,10 @@
       <h1>RENT NOW</h1>
     </div>
   </div>
+</div>
+
+<div>
+  <% @reviews.each do |review| %>
+    <p><%= review.content%> (<%= review.rating %>/5)</p>
+  <% end %>
 </div>

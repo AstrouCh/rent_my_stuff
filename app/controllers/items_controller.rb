@@ -10,6 +10,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    @bookings = Booking.where(item: @item)
+    @reviews = Review.where(booking: @bookings)
   end
 
   def new
