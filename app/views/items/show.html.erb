@@ -3,9 +3,9 @@
   <div class="product-media">
     <div class="product-images">
       <div class="main-image">
-        <% @item.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
+        <%# <% @item.photos.each do |photo| %>
+          <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <%# <% end %>
         <img id="main-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
       </div>
       <div class="side-images">
@@ -51,6 +51,6 @@
 
 <div>
   <% @reviews.each do |review| %>
-    <p><%= review.content%> (<%= review.rating %>/5)</p>
+    <p><%= review.content %> (<%= review.rating %>/5)</p>
   <% end %>
 </div>
