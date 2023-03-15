@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @photos = @item.photos.key
     @booking = Booking.new
     @bookings = Booking.where(item: @item)
     @reviews = Review.where(booking: @bookings)
