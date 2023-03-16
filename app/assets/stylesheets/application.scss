@@ -11,4 +11,25 @@
 @import "components/index";
 @import "pages/index";
 @import "pages/items/show";
-@import "pages/users/show"
+@import "pages/users/show";
+
+
+
+h1 {
+  letter-spacing: 2px;
+  font-size: 50px;
+  color: $red1;
+}
+
+h2, h3, h4 {
+  letter-spacing: 2px;
+  color: $red1;
+}
+
+h2 {
+  letter-spacing: 2px;
+}
+
+body  {
+  font-family: 'Public Sans', sans-serif;
+}
