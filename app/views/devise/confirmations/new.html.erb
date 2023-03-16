@@ -1,4 +1,4 @@
-<div class="d-flex bg-white p-3 rounded-sm shadow flex-column col-md-3 mx-auto my-5">
+<div class="d-flex bg-warning bg-opacity-25 p-3 rounded-sm shadow flex-column col-md-3 mx-auto my-5">
   <h2>Resend confirmation instructions</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -13,8 +13,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Resend confirmation instructions" %>
+    <div class="d-flex flex-column text-center form-actions px-4">
+      <%= f.button :submit, "Resend confirmation instructions", class:"btn-outline-danger btn-outline-opacity-25" %> <%= render "devise/shared/links" %>
     </div>
   <% end %>
 
