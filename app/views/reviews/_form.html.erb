@@ -1,0 +1,7 @@
+<%= simple_form_for [@booking, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+<div class="d-flex flex-column text-center form-actions px-4">
+  <%= f.button :submit, "Review it!", class:"btn-outline-danger align-self-center btn-outline-opacity-25 w-50" %>
+</div>
+<% end %>
