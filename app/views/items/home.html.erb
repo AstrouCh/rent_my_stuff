@@ -1,102 +1,56 @@
+
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "youssef-naddam-iJ2IG8ckCpA-unsplash.png"%>);">
+      <div class="container">
+        <h1>With RentMyStuff,</h1>
+        <p>rent <strong>everything</strong>, <strong>everywhere</strong>!</p>
+        <form action="/" method="GET" class="form">
+          <input type="text" name="query" class="search-input"><button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+    </div>
 <div class="container">
-    <div class="navbar">
-      <ul>
-        <div class="logo"></div>
-        <p></p>
-        <div class="button"> <a href="url", Sign-in></a></div>
-      </ul>
-    </div>
 
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "youssef-naddam-iJ2IG8ckCpA-unsplash.png"%>);">
-    <div class="container">
-      <h1>With RentMyStuff,</h1>
-      <p>rent <strong>everything</strong>, <strong>everywhere</strong>!</p>
-      <form action="/" method="GET" class="form">
-        <input type="text" name="query" class="search-input"><button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-    </div>
-  </div>
-
-    <div class="big-bloc trending">
-      <h1>TRENDING</h1>
-      <div class="card-item">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.uD9MRwwIK3xy2p_TYTYeegHaHa&pid=Api" />
-        <div class="big-bloc-infos">
-          <div>
-            <h2>Surfboard</h2>
-            <p>Fancy</p>
+        <h2 class="text-center my-4"><strong>TRENDING</strong></h2>
+        <div class="trending col-12  ">
+        <% @items.each do |item| %>
+          <div class="card me-3 col-sm-12 col-md-3 shadow">
+          <%= link_to(item_path(item), class:"text-decoration-none" ) do %>
+            <% if item.photos.attached? %>
+            <%= cl_image_tag(item.photos[0].key, class:"imagen") %>
+            <% else %>
+            <%= image_tag("https://tse2.mm.bing.net/th?id=OIP.uD9MRwwIK3xy2p_TYTYeegHaHa&pid=Api", class:"imagen") %>
+            <% end %>
+            <div class="big-bloc-infos">
+              <div class="p-2">
+                <div class="d-flex justify-content-between">
+                  <div class="flex-column">
+                    <h2 class="fs-5 text-black"><strong><%= item.title.capitalize %></strong></h2>
+                    <h2 class="fs-5 text-secondary"><%= item.price %>€ / day</h2>
+                  </div>
+                    <% if item.user.photo.attached? %>
+                    <%=  cl_image_tag(item.user.photo.key, class:"avatar")%>
+                    <% end %>
+                </div>
+              <% end %>
+              </div>
+            </div>
           </div>
-          <h2 class="card-item-pricing">10€ / day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-item-user avatar-bordered" />
+        <% end %>
+        </div>
+      <h2 class="mt-3"><strong>CATEGORIES</strong></h2>
+      <div class="text-center">
+        <% @categories.each do |category|  %>
+          <div class="card rounded shadow p-5 mb-3">
+            <p class="fs-1"><%= category.name.upcase%></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="container my-5 d-flex flex-column">
+        <h1 class="text-center pt-2">WANT TO ADD AN ITEM?</h1>
+        <div class="align-self-center bg-white col-6 py-3 px-5 rounded shadow">
+          <%= render "form_new", class:"border" %>
         </div>
       </div>
-      <div class="card-item">
-        <img src="https://expeditionportal.com/media/2016/01/DSCF48351.jpeg" />
-        <div class="big-bloc-infos">
-          <div>
-            <h2>Tent</h2>
-            <p>Fancy</p>
-          </div>
-          <h2 class="card-item-pricing">10€ / day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-item-user avatar-bordered" />
-        </div>
-      </div>
-      <div class="card-item">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.uD9MRwwIK3xy2p_TYTYeegHaHa&pid=Api" />
-        <div class="big-bloc-infos">
-          <div>
-            <h2>Speaker</h2>
-            <p>Fancy</p>
-          </div>
-          <h2 class="card-item-pricing">10€ / day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-item-user avatar-bordered" />
-        </div>
-      </div>
-      <div class="card-item">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.uD9MRwwIK3xy2p_TYTYeegHaHa&pid=Api" />
-        <div class="big-bloc-infos">
-          <div>
-            <h2>Surfboard</h2>
-            <p>Fancy</p>
-          </div>
-          <h2 class="card-item-pricing">10€ / day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-item-user avatar-bordered" />
-        </div>
-      </div>
-    </div>
-
-
-    <div class="big-bloc category">
-      <h1>ITEM CATEGORIES</h1>
-      </div>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Outdoor
-      </div>
-
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Construction tools
-      </div>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Gardenning tools
-      </div>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Art
-      </div>
-
-    </div>
-
-    <div class="container-3 big-bloc add-item">
-      <h1>WANT TO ADD AN ITEM?</h1>
-      <div class="googleform">
-      </div>
-    </div>
-
-    <div class="footer">
-      <ul>
-        <li>Facebook</li>
-        <li>Facebook</li>
-      </ul>
-    </div>
-
-  </div>
+</div>
+</div>

@@ -3,6 +3,9 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
+    @items = Item.last(4)
+    @item = Item.new
+    @categories = Category.all
   end
 
   def index
@@ -17,6 +20,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if @item.photos.attached?
+      @photo_array = []
+      @item.photos.each do |photo|
+        @photo_array << photo.key
+      end
+    end
     @booking = Booking.new
     @bookings = Booking.where(item: @item)
     @reviews = Review.where(booking: @bookings)
@@ -60,7 +69,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :location, :description, :category_id, photos: [])
+    params.require(:item).permit(:title, :price, :location, :description, :category_id, photos: [])
   end
 
 end
