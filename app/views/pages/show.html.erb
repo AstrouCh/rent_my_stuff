@@ -5,12 +5,14 @@
 
   <p><%= booking.item.title %></p>
   <p> Booking dates <%= booking.start_date %> to  <%= booking.end_date %> </p>
-
+<p>Delete item?</p>
   <%= button_to "❌",
     booking_path(booking), method: :delete %>
   <% end %>
 
 <% end %>
+
+
 
 <p> These are <%= @user.first_name %>'s items</p>
 
