@@ -23,6 +23,10 @@ gem "puma", "~> 5.0"
 # Devise
 gem "devise"
 
+# pg_search
+gem "pg_search"
+
+# checks for valid phone numbers in active record validations
 gem "phonelib"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -64,7 +68,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails"
+  # gem "dotenv-rails"
 
 end
 

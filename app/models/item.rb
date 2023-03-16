@@ -11,4 +11,11 @@ class Item < ApplicationRecord
   validates :description, length: { minimum: 20 }
   validates :average_rating, absence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_location_and_category_and_description,
+    against: [ :title, :location, :description, :category ],
+    using: {
+      tsearch: { prefix: true }
+  }
+
 end
