@@ -9,7 +9,21 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    if params[:item].present? &&  params[:address].present? && params[:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item])
+      @items = items.near(params[:address], params[:radius])
+    elsif params[:item].present? &&  params[:address].present?
+      items = Item.search_by_title_and_category_and_description(params[:item])
+      @items = items.near(params[:address], 50)
+    elsif params[:item].present? &&  params[:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item])
+      @items = items.near(current_user.address, params[:radius])
+    elsif params[:item].present?
+      items = Item.search_by_title_and_category_and_description(params[:item])
+      @items = items.near(current_user.address, 50)
+    else
+      @items = Item.all
+    end
     @markers = @items.geocoded.map do |item|
       {
         lat: item.latitude,

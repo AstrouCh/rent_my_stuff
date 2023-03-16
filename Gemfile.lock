@@ -143,6 +143,8 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mainstreet (0.3.0)
+      geocoder (>= 1.5.1)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -169,6 +171,9 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.6)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     phonelib (0.7.7)
     public_suffix (5.0.1)
     puma (5.6.5)
@@ -286,7 +291,9 @@ DEPENDENCIES
   geocoder
   jbuilder
   jsbundling-rails
+  mainstreet
   pg (~> 1.1)
+  pg_search
   phonelib
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
