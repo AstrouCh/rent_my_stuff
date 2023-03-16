@@ -1,13 +1,3 @@
 <h1>Add a new item</h1>
-
-<%= simple_form_for(@item) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :location %>
-  <%= f.input :description %>
-  <%= f.association :category %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%# <%= f.input :average_rating %>
-  <%= f.submit %>
-<% end %>
-
+<%= render "form_new" %>
 <%= link_to "Back to all items", items_path %>
