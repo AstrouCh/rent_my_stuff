@@ -1,6 +1,6 @@
 <% if current_user == @user %>
 <h1>Hello, <%= @user.first_name  %>!</h1>
-<H2>These are your bookings</H2>
+<h4>These are your bookings</h4>
 
 <ul>
   <% @bookings.each do |booking| %>
@@ -13,7 +13,7 @@
 <% end %>
 
 
-<H2> These are your items</H2>
+<h4> These are your items</h4>
 
 
 <ul>
