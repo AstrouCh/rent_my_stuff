@@ -1,20 +1,19 @@
-<h2>Log in</h2>
+<div class="d-flex bg-warning bg-opacity-25 p-3 rounded-4 shadow flex-column col-md-3 mx-auto my-5">
+  <h2>Log in</h2>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs px-5  mt-1">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <div class="d-flex flex-column text-center form-actions px-4">
+      <%= f.button :submit, "Log in", class:"btn-outline-danger fw-bold btn-outline-opacity-25 w-50 align-self-center" %> <div class="text-end"><%= render "devise/shared/links" %></div>
+    </div>
+  <% end %>
+</div>
