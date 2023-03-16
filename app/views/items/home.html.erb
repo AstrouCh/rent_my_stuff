@@ -3,13 +3,37 @@
       <div class="container">
         <h1>With RentMyStuff,</h1>
         <p>rent <strong>everything</strong>, <strong>everywhere</strong>!</p>
-        <form action="/" method="GET" class="form">
-          <input type="text" name="query" class="search-input"><button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+<!--         <form action="/items" method="GET" class="form" data-controller="address_autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"]%>">
+          <input type="text" id="item" class="search-input">
+          <input type="text" id="location" class="search-input" data-address-autocomplete-target="address">
+          <input type="integer" id="radius" class="search-input">
+          <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
+        ADD A FORM WITH FORM -->
+        <%= simple_form_for :item, url: items_path, method: :get  do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :item,
+                        required: false,
+                        placeholder: "What are you looking for today?",
+                        input_html: { value: nil } %>
+            <%= f.input :address,
+                        required: false,
+                        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                        input_html: { value: nil }%>
+            <%= f.input :radius,
+                        required: false,
+                        as: :numeric,
+                        input_html: { value: nil }%>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Search" %>
+          </div>
+        <% end %>
       </div>
     </div>
-<div class="container">
-
+  <div class="container">
         <h2 class="text-center my-4"><strong>TRENDING</strong></h2>
         <div class="trending col-12  ">
         <% @items.each do |item| %>
