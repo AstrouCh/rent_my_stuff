@@ -37,10 +37,11 @@
           </div>
         <% end %>
         </div>
+
       <h2 class="mt-3"><strong>CATEGORIES</strong></h2>
-      <div class="text-center">
+      <div class="text-center cards">
         <% @categories.each do |category|  %>
-          <div class="card rounded shadow p-5 mb-3">
+          <div class="card rounded shadow p-5 mb-3 card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path category.photo %>)">
             <p class="fs-1"><%= category.name.upcase%></p>
           </div>
         <% end %>
@@ -54,3 +55,9 @@
       </div>
 </div>
 </div>
+
+Circle x mark: <i class="fa-regular fa-circle-xmark"></i>
+Add mark: <i class="fa-solid fa-circle-plus"></i>
+Magnifying-glass: <i class="fa-solid fa-magnifying-glass"></i>
+Star: <i class="fa-regular fa-star"></i>
+heart: <i class="fa-regular fa-heart"></i>
