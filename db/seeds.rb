@@ -6,25 +6,33 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.destroy_all
+Category.destroy_all
+Item.destroy_all
+Booking.destroy_all
+
 tom = User.new(email: "tom@gmail.com", password: "tom@gmail.com", first_name: "Tom", last_name: "Burns", description: "I am looking to hire a really cool thing", address: "London", phone_number: "+447917730793")
 tom.save!
 
 astrid = User.new(email: "astridchazaux@hotmail.fr", password: "astridchazaux@hotmail.fr", first_name: "Astrid", last_name: "Chazaux", description: "I have nice stuffs to rent", address: "berlin", phone_number: "+33665348376")
 astrid.save!
 
-outdoors = Category.new(name: "outdoors")
+outdoors = Category.new(name: "Outdoors sports", photo: "surfing-gd470ebe8f_1920.jpg")
 outdoors.save!
 
-construction_tools = Category.new(name: "Construction tools")
+construction_tools = Category.new(name: "Construction tools", photo: "hammer-g4eaa7667a_1920.jpg")
 construction_tools.save!
 
-gardening_tools = Category.new(name: "Gardening tools")
+camping = Category.new(name: "Camping items", photo: "tent-g2645ac2b8_1920.jpg")
+camping.save!
+
+gardening_tools = Category.new(name: "Gardening tools", photo: "computing-gecf40deaa_1920.jpg")
 gardening_tools.save!
 
-videogames_tools = Category.new(name: "Videogames tools")
+videogames_tools = Category.new(name: "Videogames tools", photo: "video-games-g295e9f211_1920.jpg")
 videogames_tools.save!
 
-party = Category.new(name: "Party")
+party = Category.new(name: "Party", photo: "headlights-g6d3765276_1920.jpg")
 party.save!
 
 surfboard = Item.new(price: 15, title: "Big Mal", location: "Bondi Beach", description: "Big surfbaord mega mega big mega", user: User.first, category: Category.first)

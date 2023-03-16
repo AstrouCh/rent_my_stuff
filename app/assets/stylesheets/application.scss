@@ -32,4 +32,8 @@ h2 {
 
 body  {
   font-family: 'Public Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
