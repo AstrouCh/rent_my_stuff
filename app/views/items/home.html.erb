@@ -33,6 +33,7 @@
         <% end %>
       </div>
     </div>
+<<<<<<< HEAD
   <div class="container">
         <h2 class="text-center my-4"><strong>TRENDING</strong></h2>
         <div class="trending col-12  ">
@@ -59,12 +60,42 @@
               </div>
             </div>
           </div>
+=======
+
+  <div class="container">
+    <h2 class="text-center my-4"><strong>TRENDING</strong></h2>
+    <div class="trending col-12  ">
+    <% @items.each do |item| %>
+      <div class="card me-3 col-sm-12 col-md-3 shadow">
+      <%= link_to(item_path(item), class:"text-decoration-none" ) do %>
+        <% if item.photos.attached? %>
+        <%= cl_image_tag(item.photos[0].key, class:"imagen") %>
+        <% else %>
+        <%= image_tag("https://tse2.mm.bing.net/th?id=OIP.uD9MRwwIK3xy2p_TYTYeegHaHa&pid=Api", class:"imagen") %>
+>>>>>>> master
         <% end %>
+        <div class="big-bloc-infos">
+          <div class="p-2">
+            <div class="d-flex justify-content-between">
+              <div class="flex-column">
+                <h2 class="fs-5 text-black"><strong><%= item.title.capitalize %></strong></h2>
+                <h2 class="fs-5 text-secondary"><%= item.price %>€ / day</h2>
+              </div>
+                <% if item.user.photo.attached? %>
+                <%=  cl_image_tag(item.user.photo.key, class:"avatar")%>
+                <% end %>
+            </div>
+          <% end %>
+          </div>
         </div>
+      </div>
+    <% end %>
+    </div>
+
       <h2 class="mt-3"><strong>CATEGORIES</strong></h2>
-      <div class="text-center">
+      <div class="text-center cards">
         <% @categories.each do |category|  %>
-          <div class="card rounded shadow p-5 mb-3">
+          <div class="card rounded shadow p-5 mb-3 card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path category.photo %>)">
             <p class="fs-1"><%= category.name.upcase%></p>
           </div>
         <% end %>
@@ -72,9 +103,14 @@
 
       <div class="container my-5 d-flex flex-column">
         <h1 class="text-center pt-2">WANT TO ADD AN ITEM?</h1>
-        <div class="align-self-center bg-white col-6 py-3 px-5 rounded shadow">
+        <div class="d-flex bg-warning bg-opacity-25 p-5 rounded-4 shadow flex-column col-md-6  mx-auto my-5">
           <%= render "form_new", class:"border" %>
         </div>
       </div>
+      Circle x mark: <i class="fa-regular fa-circle-xmark"></i>
+Add mark: <i class="fa-solid fa-circle-plus"></i>
+Magnifying-glass: <i class="fa-solid fa-magnifying-glass"></i>
+Star: <i class="fa-regular fa-star"></i>
+heart: <i class="fa-regular fa-heart"></i>
 </div>
 </div>
