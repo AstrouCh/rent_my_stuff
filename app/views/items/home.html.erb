@@ -3,13 +3,7 @@
       <div class="container">
         <h1>With RentMyStuff,</h1>
         <p>rent <strong>everything</strong>, <strong>everywhere</strong>!</p>
-<!--         <form action="/items" method="GET" class="form" data-controller="address_autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"]%>">
-          <input type="text" id="item" class="search-input">
-          <input type="text" id="location" class="search-input" data-address-autocomplete-target="address">
-          <input type="integer" id="radius" class="search-input">
-          <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-        ADD A FORM WITH FORM -->
+
         <%= simple_form_for :item, url: items_path, method: :get  do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
@@ -35,7 +29,7 @@
     </div>
 
   <div class="container">
-    <h2 class="text-center my-4"><strong>TRENDING</strong></h2>
+    <h2 class="text-center my-5"><strong>TRENDING</strong></h2>
     <div class="trending col-12  ">
     <% @items.each do |item| %>
       <div class="card me-3 col-sm-12 col-md-3 shadow">
@@ -49,8 +43,8 @@
           <div class="p-2">
             <div class="d-flex justify-content-between">
               <div class="flex-column">
-                <h2 class="fs-5 text-black"><strong><%= item.title.capitalize %></strong></h2>
-                <h2 class="fs-5 text-secondary"><%= item.price %>€ / day</h2>
+                <p><strong><%= item.title.capitalize %></strong></p>
+                <p><%= item.price %>€ / day</p>
               </div>
                 <% if item.user.photo.attached? %>
                 <%=  cl_image_tag(item.user.photo.key, class:"avatar")%>
@@ -63,7 +57,7 @@
     <% end %>
     </div>
 
-      <h2 class="mt-3"><strong>CATEGORIES</strong></h2>
+      <h2 class="my-5"><strong>CATEGORIES</strong></h2>
       <div class="text-center cards">
         <% @categories.each do |category|  %>
           <div class="card rounded shadow p-5 mb-3 card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path category.photo %>)">
