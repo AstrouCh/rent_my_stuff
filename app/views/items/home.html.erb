@@ -35,8 +35,8 @@
     <h2 class="text-center my-5"><strong>TRENDING</strong></h2>
     <div class="trending col-12  ">
     <% @items.each do |item| %>
-      <div class="card me-3 col-sm-12 col-md-3 shadow">
-      <%= link_to(item_path(item), class:"text-decoration-none" ) do %>
+      <div class="card me-3  col-sm-12 col-md-3 shadow" id="border-radius">
+      <%= link_to(item_path(item), class:"text-decoration-none rounded-3" ) do %>
         <% if item.photos.attached? %>
         <%= cl_image_tag(item.photos[0].key, class:"imagen") %>
         <% else %>

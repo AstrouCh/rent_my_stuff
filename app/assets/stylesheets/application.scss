@@ -37,15 +37,16 @@ body  {
   font-family: 'Work Sans', sans-serif !important;
   display: flex;
   min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
+  max-width: 100vh;
 }
 
 a {
   color: $red3;
   text-decoration-line: underline;
+
 }
 
 .home-form-inline {
   display: flex;
-}
+
+
