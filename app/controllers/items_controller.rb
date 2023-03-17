@@ -8,21 +8,22 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
+
   def index
-    if params[:item].present? &&  params[:address].present? && params[:radius].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(params[:address], params[:radius])
-    elsif params[:item].present? &&  params[:address].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(params[:address], 50)
-    elsif params[:item].present? &&  params[:radius].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(current_user.address, params[:radius])
-    elsif params[:item].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(current_user.address, 50)
-    else
-      @items = Item.all
+    @items = Item.all
+    if params.present? && params[:item].present? && params[:item][:item].present? &&  params[:item][:location].present? && params[:item][:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = Item.near(params[:item][:location], params[:item][:radius])
+    elsif params.present? && params[:item].present? && params[:item][:location].present? && params[:item][:radius].present?
+      @items = Item.near(params[:item][:location], params[:item][:radius])
+    elsif params.present? && params[:item].present? && params[:item][:item].present? &&  params[:item][:location].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = Item.near(params[:item][:location], 50)
+    elsif params.present? && params[:item].present? && params[:item][:item].present? &&  params[:item][:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = Item.near(current_user.address, params[:item][:radius])
+    elsif params.present? && params[:item].present? && params[:item][:item].present?
+      @items = Item.search_by_title_and_category_and_description(params[:item][:item])
     end
     @markers = @items.geocoded.map do |item|
       {

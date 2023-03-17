@@ -1,47 +1,38 @@
+
 <% if current_user == @user %>
-<div class="container">
+<div class="container-show">
   <h2>Hello, <%= @user.first_name  %>!</h2>
-  <div class="background1">
-    <h4>These are your bookings</h4>
-    <div class="cards-container">
-      <div class="cards">
-
-
-      </div>
-    </div>
-
-
+  <h4>These are your bookings</h4>
+  <div class="cards-container">
+    <div class="cards">
       <% @bookings.each do |booking| %>
+      <% if booking.item.photos.attached? %>
         <div class="card-product">
           <%= cl_image_tag(booking.item.photos.first.key, class:"cool") %>
           <div class="card-product-infos">
-          <h2><%= link_to booking.item.title, item_path(booking.item) %></h2>
-          <p> From <%= booking.start_date %> to <%= booking.end_date %> </p>
-            <p><%= booking.item.description %></p>
-        <p><%= button_to "❌", booking_path(booking), method: :delete %> </p>
-        <p><%= link_to("Leave a review", new_booking_review_path(booking)) %></p>
+            <h2><%= link_to booking.item.title, item_path(booking.item) %></h2>
+            <p> From <%= booking.start_date %> to <%= booking.end_date %> </p>
+            <p><%= button_to "❎", booking_path(booking), method: :delete, id:"button"%> </p>
+            <p><%= link_to("Leave a review", new_booking_review_path(booking)) %></p>
           </div>
         </div>
-
+        <% end %>
       <% end %>
-  </div>
-
-
+    </div>
 
     <h4> These are your items</h4>
-
-
-
-    <% @items.each do |item| %>
+    <div class="cards">
+      <% @items.each do |item| %>
       <div class="card-product">
-        <img class="cool" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <%= cl_image_tag(item.photos.first.key, class:"cool") %>
         <div class="card-product-infos">
-        <h2><%= link_to item.title, item_path(item)  %></h2>
-        <p><%= item.description %></p>
-        <p><%= link_to("Edit this item", edit_item_path(item)) %></p>
-        <p><%= button_to "❌", item_path(item), method: :delete %></p>
+          <h2><%= link_to item.title, item_path(item)  %></h2>
+          <p><%= link_to("Edit this item", edit_item_path(item)) %></p>
+          <p><%= button_to "❎", item_path(item), method: :delete, id:"button" %></p>
+        </div>
       </div>
     <% end %>
-
+  </div>
 </div>
+
 <% end %>

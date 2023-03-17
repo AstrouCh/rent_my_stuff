@@ -1,7 +1,34 @@
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, p {
   text-align: center;
   margin-top: 30px;
+  text-decoration: none;
+}
+
+.container-show {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+a, p {
+  text-align: center!important;
+  text-decoration: none;
+  color: #08415C;
+}
+
+.hello {
+  display: flex;
+  justify-content: center;
+}
+
+#button {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center!important;
 }
 
 h1 {
@@ -15,19 +42,21 @@ h4 {
 
 .cards-container {
 margin-bottom: 20px;
-width: auto;
+width: min-content;
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// text-align: center;
 }
 
 .cool {
   border-radius: 15px 15px 15px 15px;
 }
 
-
-
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
   margin-bottom: 20px;
 }
 
@@ -66,4 +95,9 @@ width: auto;
 
 .card-product .card-product-infos {
   padding: 16px;
+  text-align: center;
+}
+
+.card-product-infos {
+  width: 100%
 }
