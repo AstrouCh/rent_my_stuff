@@ -8,18 +8,22 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
+
   def index
-    if params[:item].present? &&  params[:address].present? && params[:radius].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(params[:address], params[:radius])
-    elsif params[:item].present? &&  params[:address].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(params[:address], 50)
-    elsif params[:item].present? &&  params[:radius].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
-      @items = items.near(current_user.address, params[:radius])
-    elsif params[:item].present?
-      items = Item.search_by_title_and_category_and_description(params[:item])
+    if params[:item][:item].present? &&  params[:item][:address].present? && params[:item][:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = items.near(params[:item][:address], params[:item][:radius])
+    elsif params[:item][:address].present? && params[:item][:radius].present?
+      @items = items.near(params[:item][:address], params[:item][:radius])
+    elsif params[:item][:item].present? &&  params[:item][:address].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = items.near(params[:item][:address], 50)
+    elsif params[:item][:item].present? &&  params[:item][:radius].present?
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
+      @items = items.near(current_user.address, params[:item][:radius])
+    elsif params[:item][:item].present?
+      raise
+      items = Item.search_by_title_and_category_and_description(params[:item][:item])
       @items = items.near(current_user.address, 50)
     else
       @items = Item.all

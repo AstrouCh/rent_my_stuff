@@ -15,7 +15,6 @@ Item.destroy_all
 Booking.destroy_all
 
 20.times do
-  Faker::Config.locale = 'en-AU'
   user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(min_length: 8), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 8), address: Faker::Address.city, phone_number: "+447917730793")
   file = URI.open(Faker::Avatar.image)
   user.photo.attach(io: file, filename: "#{Faker::Internet.password(min_length: 5)}.png", content_type: 'image/png')
@@ -41,22 +40,13 @@ party = Category.new(name: "Party", photo: "headlights-g6d3765276_1920.jpg")
 party.save!
 
 80.times do
-  item = Item.new(price: rand(1..40), title: Faker::Appliance.equipment, location: Faker::Address.city, description: Faker::Lorem.sentence(word_count: 7), category: Category.find(rand(1..6)),  user: User.last)
-  3.times do
+  item = Item.new(price: rand(1..40), title: Faker::Appliance.equipment, location: Faker::Address.city, description: Faker::Lorem.sentence(word_count: 7), category: Category.find(rand(1..6)),  user: User.find(1..20))
+  4.times do
     file = URI.open("https://loremflickr.com/620/540/stuff")
     item.photos.attach(io: file, filename:  "#{Faker::Internet.password(min_length: 5)}.png", content_type: 'image/png')
   end
   item.save!
 end
-
-big_speaker = Item.new(price: 5, title: "Big speaker", location: "Paris", description: "Very powerful and big speakers", user: User.last, category: Category.last)
-big_speaker.save!
-
-climbing_material = Item.new(price: 8, title: "Climbing Material", location: "Fontainebleau", description: "Mattress, shoes and ropes", user: User.last, category: Category.first)
-climbing_material.save!
-
-circular_saw = Item.new(price: 20, title: "Circular Saw", location: "Fontainebleau", description: "Amazingly cutting stuff", user: User.last, category: Category.first)
-circular_saw.save!
 
 first_booking = Booking.new(item: Item.first, user: User.first, start_date: Time.now, end_date: Time.now)
 first_booking.save!
