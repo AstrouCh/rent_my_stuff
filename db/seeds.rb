@@ -5,17 +5,22 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+require 'open-uri'
+
 
 User.destroy_all
 Category.destroy_all
 Item.destroy_all
 Booking.destroy_all
 
-tom = User.new(email: "tom@gmail.com", password: "tom@gmail.com", first_name: "Tom", last_name: "Burns", description: "I am looking to hire a really cool thing", address: "London", phone_number: "+447917730793")
-tom.save!
-
-astrid = User.new(email: "astridchazaux@hotmail.fr", password: "astridchazaux@hotmail.fr", first_name: "Astrid", last_name: "Chazaux", description: "I have nice stuffs to rent", address: "berlin", phone_number: "+33665348376")
-astrid.save!
+20.times do
+  Faker::Config.locale = 'en-AU'
+  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(min_length: 8), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 8), address: Faker::Address.city, phone_number: "+447917730793")
+  file = URI.open(Faker::Avatar.image)
+  user.photo.attach(io: file, filename: "#{Faker::Internet.password(min_length: 5)}.png", content_type: 'image/png')
+  user.save!
+end
 
 outdoors = Category.new(name: "Outdoors sports", photo: "surfing-gd470ebe8f_1920.jpg")
 outdoors.save!
@@ -35,8 +40,14 @@ videogames_tools.save!
 party = Category.new(name: "Party", photo: "headlights-g6d3765276_1920.jpg")
 party.save!
 
-surfboard = Item.new(price: 15, title: "Big Mal", location: "Bondi Beach", description: "Big surfbaord mega mega big mega", user: User.first, category: Category.first)
-surfboard.save!
+80.times do
+  item = Item.new(price: rand(1..40), title: Faker::Appliance.equipment, location: Faker::Address.city, description: Faker::Lorem.sentence(word_count: 7), category: Category.find(rand(1..6)),  user: User.last)
+  3.times do
+    file = URI.open("https://loremflickr.com/620/540/stuff")
+    item.photos.attach(io: file, filename:  "#{Faker::Internet.password(min_length: 5)}.png", content_type: 'image/png')
+  end
+  item.save!
+end
 
 big_speaker = Item.new(price: 5, title: "Big speaker", location: "Paris", description: "Very powerful and big speakers", user: User.last, category: Category.last)
 big_speaker.save!
