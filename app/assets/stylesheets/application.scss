@@ -41,12 +41,11 @@ body  {
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
-* {
-  
-=======
 a {
   color: $red3;
   text-decoration-line: underline;
->>>>>>> master
+}
+
+.home-form-inline {
+  display: flex;
 }
