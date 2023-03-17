@@ -34,21 +34,3 @@ videogames_tools.save!
 
 party = Category.new(name: "Party", photo: "headlights-g6d3765276_1920.jpg")
 party.save!
-
-surfboard = Item.new(price: 15, title: "Big Mal", location: "Bondi Beach", description: "Big surfbaord mega mega big mega", user: User.first, category: Category.first)
-surfboard.save!
-
-big_speaker = Item.new(price: 5, title: "Big speaker", location: "Paris", description: "Very powerful and big speakers", user: User.last, category: Category.last)
-big_speaker.save!
-
-climbing_material = Item.new(price: 8, title: "Climbing Material", location: "Fontainebleau", description: "Mattress, shoes and ropes", user: User.last, category: Category.first)
-climbing_material.save!
-
-circular_saw = Item.new(price: 20, title: "Circular Saw", location: "Fontainebleau", description: "Amazingly cutting stuff", user: User.last, category: Category.first)
-circular_saw.save!
-
-first_booking = Booking.new(item: Item.first, user: User.first, start_date: Time.now, end_date: Time.now)
-first_booking.save!
-
-last_booking = Booking.new(item: Item.last, user: User.last, start_date: Time.now, end_date: Time.now)
-last_booking.save!
