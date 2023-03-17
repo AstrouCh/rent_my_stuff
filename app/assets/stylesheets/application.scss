@@ -18,22 +18,29 @@
 h1 {
   letter-spacing: 2px;
   font-size: 50px;
-  color: $red1;
+  color: $darkblue;
+  font-family: 'Work Sans', sans-serif;
 }
 
 h2, h3, h4 {
   letter-spacing: 2px;
-  color: $red1;
+  color: $darkblue;
+  font-family: 'Work Sans', sans-serif !important;
 }
 
 h2 {
   letter-spacing: 2px;
+  font-family: 'Work Sans', sans-serif !important;
 }
 
 body  {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif !important;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
+}
+
+* {
+  
 }
