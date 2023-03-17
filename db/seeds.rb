@@ -39,9 +39,9 @@ videogames_tools.save!
 party = Category.new(name: "Party", photo: "headlights-g6d3765276_1920.jpg")
 party.save!
 
-80.times do
-  item = Item.new(price: rand(1..40), title: Faker::Appliance.equipment, location: Faker::Address.city, description: Faker::Lorem.sentence(word_count: 7), category: Category.find(rand(1..6)),  user: User.find(1..20))
-  4.times do
+40.times do
+  item = Item.new(price: rand(1..40), title: Faker::Appliance.equipment, location: Faker::Address.city, description: Faker::Lorem.sentence(word_count: 7), category: Category.find(rand(1..6)),  user: User.last)
+  3.times do
     file = URI.open("https://loremflickr.com/620/540/stuff")
     item.photos.attach(io: file, filename:  "#{Faker::Internet.password(min_length: 5)}.png", content_type: 'image/png')
   end

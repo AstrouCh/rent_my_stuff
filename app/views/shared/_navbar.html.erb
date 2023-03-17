@@ -1,14 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "brand.png", style:"width:100px;height:40px;" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
@@ -19,6 +19,9 @@
           </li>
           <li class="nav-item">
           <%= link_to "All items", items_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+          <%= link_to "My stuff", user_page_path(current_user), class:"nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
