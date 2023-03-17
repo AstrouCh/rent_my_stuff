@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
       {
         lat: item.latitude,
         lng: item.longitude,
-        info_window_html: render_to_string(partial: "window", locals: {item: item}),marker_html: render_to_string(partial: "marker")
+        info_window_html: render_to_string(partial: "window", locals: { item: item }),marker_html: render_to_string(partial: "marker")
       }
     end
   end
@@ -41,9 +41,18 @@ class ItemsController < ApplicationController
         @photo_array << photo.key
       end
     end
+
     @booking = Booking.new
     @bookings = Booking.where(item: @item)
     @reviews = Review.where(booking: @bookings)
+
+    @markers = [
+      {
+        lat: @item.latitude,
+        lng: @item.longitude,
+        info_window_html: render_to_string(partial: "window", locals: { item: @item } ), marker_html: render_to_string(partial: "marker")
+      }]
+
   end
 
   def new
